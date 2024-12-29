@@ -42,3 +42,8 @@ module "eks" {
 
   addons = var.addons
 }
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "shabbir_bucket_for_dev_secops2"  # Replace with your bucket name
+  acl    = "private"                    # Set to private for security
+}
