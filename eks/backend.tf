@@ -8,7 +8,7 @@ required_providers {
     }
   }
   backend "s3" {
-    bucket         = "my-ews-baket11221"
+    bucket         = "shabbir_bucket_for_dev_secops2"
     region         = "us-east-1"
     key            = "eks/terraform.tfstate"
     dynamodb_table = "Lock-Files"
