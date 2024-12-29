@@ -43,7 +43,24 @@ module "eks" {
   addons = var.addons
 }
 
+# below code is of mine
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "shabbir_bucket_for_dev_secops2"  # Replace with your bucket name
+  bucket = "shabbir-bucket-for-dev-secops2"  # Replace with your bucket name
   acl    = "private"                    # Set to private for security
 }
+
+resource "aws_dynamodb_table" "terraform_lock" {
+  name         = "Lock-Files"
+  hash_key     = "LockID"
+  read_capacity  = 1
+  write_capacity = 1
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+
+  billing_mode = "PROVISIONED"
+  }
+}
+
